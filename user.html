@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        StayEasy - User Dashboard
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🏨 StayEasy
+        </div>
+
+
+        <div class="nav-links">
+
+            <button
+                onclick="showUserSection('homeSection')"
+            >
+                🏠 Home
+            </button>
+
+
+            <button
+                onclick="showUserSection('hotelsSection')"
+            >
+                🏨 Hotels
+            </button>
+
+
+            <button
+                onclick="showUserSection('bookingsSection')"
+            >
+                📋 My Bookings
+            </button>
+
+
+            <button
+                onclick="logoutUser()"
+            >
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <main>
+
+        <!-- HOME -->
+
+        <section
+            id="homeSection"
+            class="user-section"
+        >
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <p class="small-title">
+                        WELCOME TO STAYEASY
+                    </p>
+
+                    <h1>
+                        Find Your Perfect Stay
+                    </h1>
+
+                    <p>
+                        Search hotels, compare rooms,
+                        check amenities and book your
+                        stay easily.
+                    </p>
+
+                    <button
+                        class="hero-btn"
+                        onclick="showUserSection('hotelsSection')"
+                    >
+                        Explore Hotels
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature-card">
+
+                    <span>🔎</span>
+
+                    <h3>
+                        Easy Search
+                    </h3>
+
+                    <p>
+                        Find hotels according to
+                        your location.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <span>💰</span>
+
+                    <h3>
+                        Best Prices
+                    </h3>
+
+                    <p>
+                        Compare different room prices.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <span>🛏️</span>
+
+                    <h3>
+                        Easy Booking
+                    </h3>
+
+                    <p>
+                        Book your preferred room quickly.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <span>⭐</span>
+
+                    <h3>
+                        Reviews
+                    </h3>
+
+                    <p>
+                        Check customer ratings and reviews.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOTELS -->
+
+        <section
+            id="hotelsSection"
+            class="user-section hidden"
+        >
+
+            <div class="page-heading">
+
+                <h1>
+                    🏨 Search Hotels
+                </h1>
+
+                <p>
+                    Find hotels based on location,
+                    price and amenities.
+                </p>
+
+            </div>
+
+
+            <div class="search-panel">
+
+                <div class="input-group">
+
+                    <label>
+                        Location
+                    </label>
+
+                    <select id="locationFilter">
+
+                        <option value="all">
+                            All Locations
+                        </option>
+
+                        <option value="Vijayawada">
+                            Vijayawada
+                        </option>
+
+                        <option value="Hyderabad">
+                            Hyderabad
+                        </option>
+
+                        <option value="Visakhapatnam">
+                            Visakhapatnam
+                        </option>
+
+                        <option value="Bengaluru">
+                            Bengaluru
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Maximum Price
+                    </label>
+
+                    <select id="priceFilter">
+
+                        <option value="all">
+                            Any Price
+                        </option>
+
+                        <option value="1500">
+                            ₹1500
+                        </option>
+
+                        <option value="2500">
+                            ₹2500
+                        </option>
+
+                        <option value="4000">
+                            ₹4000
+                        </option>
+
+                        <option value="6000">
+                            ₹6000
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Amenity
+                    </label>
+
+                    <select id="amenityFilter">
+
+                        <option value="all">
+                            All Amenities
+                        </option>
+
+                        <option value="WiFi">
+                            WiFi
+                        </option>
+
+                        <option value="Pool">
+                            Swimming Pool
+                        </option>
+
+                        <option value="AC">
+                            AC
+                        </option>
+
+                        <option value="Parking">
+                            Parking
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    class="search-btn"
+                    onclick="searchHotels()"
+                >
+                    🔎 Search
+                </button>
+
+            </div>
+
+
+            <div
+                id="hotelResults"
+                class="hotel-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- BOOKINGS -->
+
+        <section
+            id="bookingsSection"
+            class="user-section hidden"
+        >
+
+            <div class="page-heading">
+
+                <h1>
+                    📋 My Bookings
+                </h1>
+
+                <p>
+                    View your confirmed hotel reservations.
+                </p>
+
+            </div>
+
+
+            <div
+                id="userBookings"
+                class="booking-list"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <!-- BOOKING MODAL -->
+
+    <div
+        id="bookingModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-box">
+
+            <button
+                class="close-btn"
+                onclick="closeBookingModal()"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                🏨 Book Your Room
+            </h2>
+
+
+            <div id="selectedHotel"></div>
+
+
+            <label>
+                Check-in Date
+            </label>
+
+            <input
+                type="date"
+                id="checkinDate"
+            >
+
+
+            <label>
+                Check-out Date
+            </label>
+
+            <input
+                type="date"
+                id="checkoutDate"
+            >
+
+
+            <label>
+                Number of Guests
+            </label>
+
+            <input
+                type="number"
+                id="guestCount"
+                value="1"
+                min="1"
+                max="10"
+            >
+
+
+            <label>
+                Payment Method
+            </label>
+
+            <select id="paymentMethod">
+
+                <option value="UPI">
+                    UPI
+                </option>
+
+                <option value="Card">
+                    Credit / Debit Card
+                </option>
+
+                <option value="Cash">
+                    Pay at Hotel
+                </option>
+
+            </select>
+
+
+            <button
+                class="primary-btn"
+                onclick="confirmBooking()"
+            >
+                💳 Confirm Booking
+            </button>
+
+
+            <p
+                id="bookingMessage"
+                class="message"
+            ></p>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        window.onload = function () {
+
+            checkUserLogin();
+
+            displayHotels();
+
+            displayUserBookings();
+
+        };
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        StayEasy - Admin Module
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- ADMIN NAVIGATION -->
+
+    <nav class="navbar admin-navbar">
+
+        <div class="logo">
+            🛠️ StayEasy Admin
+        </div>
+
+
+        <div class="nav-links">
+
+            <button
+                onclick="showAdminSection('adminDashboard')"
+            >
+                📊 Dashboard
+            </button>
+
+
+            <button
+                onclick="showAdminSection('adminHotels')"
+            >
+                🏨 Hotels
+            </button>
+
+
+            <button
+                onclick="showAdminSection('adminBookings')"
+            >
+                📋 Bookings
+            </button>
+
+
+            <button
+                onclick="showAdminSection('adminReviews')"
+            >
+                ⭐ Reviews
+            </button>
+
+
+            <button
+                onclick="logoutAdmin()"
+            >
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <main class="admin-main">
+
+
+        <!-- DASHBOARD -->
+
+        <section
+            id="adminDashboard"
+            class="admin-section"
+        >
+
+            <div class="page-heading">
+
+                <h1>
+                    📊 Admin Dashboard
+                </h1>
+
+                <p>
+                    Manage hotel bookings and monitor
+                    platform activity.
+                </p>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <span>🏨</span>
+
+                    <h2 id="totalHotels">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Hotels
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>📋</span>
+
+                    <h2 id="totalBookings">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Bookings
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>👤</span>
+
+                    <h2 id="totalUsers">
+                        0
+                    </h2>
+
+                    <p>
+                        Registered Users
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>⭐</span>
+
+                    <h2 id="totalReviews">
+                        0
+                    </h2>
+
+                    <p>
+                        Customer Reviews
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-info-box">
+
+                <h2>
+                    Admin Responsibilities
+                </h2>
+
+                <ul>
+
+                    <li>
+                        Manage hotels and room availability
+                    </li>
+
+                    <li>
+                        Monitor customer bookings
+                    </li>
+
+                    <li>
+                        Update room status
+                    </li>
+
+                    <li>
+                        Monitor customer reviews
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- HOTEL MANAGEMENT -->
+
+        <section
+            id="adminHotels"
+            class="admin-section hidden"
+        >
+
+            <div class="page-heading">
+
+                <h1>
+                    🏨 Hotel Management
+                </h1>
+
+                <p>
+                    Manage hotel room availability.
+                </p>
+
+            </div>
+
+
+            <div id="adminHotelList"></div>
+
+        </section>
+
+
+        <!-- BOOKING MANAGEMENT -->
+
+        <section
+            id="adminBookings"
+            class="admin-section hidden"
+        >
+
+            <div class="page-heading">
+
+                <h1>
+                    📋 Booking Management
+                </h1>
+
+                <p>
+                    View and manage customer reservations.
+                </p>
+
+            </div>
+
+
+            <div
+                id="adminBookingList"
+                class="admin-booking-list"
+            ></div>
+
+        </section>
+
+
+        <!-- REVIEWS -->
+
+        <section
+            id="adminReviews"
+            class="admin-section hidden"
+        >
+
+            <div class="page-heading">
+
+                <h1>
+                    ⭐ Customer Reviews
+                </h1>
+
+                <p>
+                    Monitor customer feedback.
+                </p>
+
+            </div>
+
+
+            <div id="adminReviewList"></div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        window.onload = function () {
+
+            checkAdminLogin();
+
+            displayAdminDashboard();
+
+            displayAdminHotels();
+
+            displayAdminBookings();
+
+            displayAdminReviews();
+
+        };
+
+    </script>
+
+</body>
+
+</html>
